@@ -1014,7 +1014,7 @@ export default function App() {
               </a>
               <a
                 className="secondary-button modal-button"
-                href="https://github.com/balasankaran4/AR--Based-Smart-Crop-Advisory-System-Using-CNN-and-Geolocation-Algorithm-"
+                href="https://github.com/balasankaran4/AR--Based-Smart-Crop-Advisory-System-Using-CNN-and-Geolocation-Algorithm-/releases/tag/v1.0"
                 target="_blank"
                 rel="noreferrer"
               >
