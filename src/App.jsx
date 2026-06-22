@@ -454,20 +454,27 @@ export default function App() {
     event.preventDefault();
 
     if (!formState.name || !formState.email || !formState.message) {
-      setFormStatus({ status: 'error', message: 'Please add your name, email, and message.' });
+      setFormStatus({ status: 'error', message: 'Please fill in your name, email, and message.' });
       return;
     }
 
-    setFormStatus({ status: 'sending', message: 'Preparing your message...' });
     playClick();
 
-    setTimeout(() => {
-      setFormStatus({
-        status: 'success',
-        message: 'Message prepared. You can connect directly through email or phone from the contact panel.',
-      });
-      setFormState({ name: '', email: '', subject: '', message: '' });
-    }, 900);
+    const subject = encodeURIComponent(
+      formState.subject ? formState.subject : 'Portfolio Contact'
+    );
+    const body = encodeURIComponent(
+      `Name: ${formState.name}\nEmail: ${formState.email}\n\n${formState.message}`
+    );
+
+    // Opens the visitor's email client (Gmail/Outlook etc.) pre-filled — lands in your inbox.
+    window.open(`mailto:bsankaran80@gmail.com?subject=${subject}&body=${body}`, '_blank');
+
+    setFormStatus({
+      status: 'success',
+      message: 'Your email client opened with the message ready. Just hit Send!',
+    });
+    setFormState({ name: '', email: '', subject: '', message: '' });
   };
 
   const triggerPrintResume = () => {
